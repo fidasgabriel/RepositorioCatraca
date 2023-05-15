@@ -37,13 +37,10 @@ jobs:
       name: Deploy Docker image
       with:
            image: fidasgabriel/aula_deploy_dockerhub
-           tags: fidasgabriel/aula_deploy_dockerhub:latest
+           tags: ${{ env.VERSION }}
            registry: docker.io
            dockerfile: dockerfile
            username: ${{ secrets.DOCKER_USER }}
            password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Update version
-      uses: appleboy/semantic-release-action@v2
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 

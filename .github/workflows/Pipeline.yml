@@ -38,7 +38,7 @@ jobs:
       with:
            
            image: fidasgabriel/aula_deploy_dockerhub
-           tags: ${{ github.run_number/10 }}
+           tags: ${{ github.run_number }}
            registry: docker.io
            dockerfile: dockerfile
            username: ${{ secrets.DOCKER_USER }}

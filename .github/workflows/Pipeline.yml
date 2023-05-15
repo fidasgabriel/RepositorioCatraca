@@ -43,9 +43,9 @@ jobs:
            username: ${{ secrets.DOCKER_USER }}
            password: ${{ secrets.DOCKER_PASSWORD }}
     - uses: mathieudutour/github-actions-auto-version@v1
-      name: Update tag with new version
+      name: Atualizar versão
       with:
-          repo-token: "${{ secrets.GIT_TOKEN }}"
+          repo-token: ${{ secrets.GIT_TOKEN }}
           ref: "main"
           push: "true"
 

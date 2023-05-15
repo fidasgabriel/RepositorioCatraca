@@ -9,9 +9,6 @@ on:
   pull_request:
     branches: [ "main" ]
     
-env:
-  VERSION: 1.0.0
-
 jobs:
   build:
 
@@ -36,17 +33,12 @@ jobs:
       run: |
            cd src
            javac -cp . Main.java
-    - name: Update version
-      id: update_version
-      run: |
-          version=$(echo ${{ env.VERSION }} | awk -F. '{$NF = $NF + 1;} 1' OFS=.)
-          echo "VERSION=$version" >> $GITHUB_ENV
     - uses: mr-smithers-excellent/docker-build-push@v6
       name: Deploy Docker image
       with:
            
            image: fidasgabriel/aula_deploy_dockerhub
-           tags: ${{ env.VERSION }}
+           tags: ${{ github.run_number }} / 10
            registry: docker.io
            dockerfile: dockerfile
            username: ${{ secrets.DOCKER_USER }}
